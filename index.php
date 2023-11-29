@@ -1,6 +1,4 @@
-<?php
-    include_once 'includes/dbh.inc.php'
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,16 +8,26 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        $sql = "SELECT * FROM users;";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
+    
+    <form action="includes/insertAdmin.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="first" placeholder="First Name">
+        <br>
+        <input type="text" name="middle" placeholder="Middle Initial">
+        <br>
+        <input type="text" name="last" placeholder="Last Name">
+        <br>
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <input type="text" name="password" placeholder="Password">
+        <br>
+        <input type="text" name="email" placeholder="Email">
+        <br>
+        <input type="text" name="discord" placeholder="Discord Name">
+        <br>
+        <button type="submit" name="submit">Add new admin</button>
+    </form>
 
-        if ($resultCheck >= 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo $row['First_Name'] . "<br>";
-            }
-        }
-    ?>
 </body>
 </html>
