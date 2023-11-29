@@ -228,13 +228,6 @@ BEGIN
 END //
 DELIMITER ;
 
-DELIMITER //
-CREATE PROCEDURE SelectEvents()
-BEGIN
-    SELECT * FROM Event;
-END //
-DELIMITER ;
-
 
 --STUDENT FUNCTIONALITIES
 
@@ -290,18 +283,6 @@ BEGIN
     WHERE UIN = target_uin;
 END //
 DELIMITER ;
-
-DELIMITER //
-CREATE PROCEDURE DeactivateUser(
-    IN target_uin INT
-)
-BEGIN
-    UPDATE Users
-    SET User_Type = 'Inactive'
-    WHERE UIN = target_uin;
-END //
-DELIMITER ;
-
 
 --application information management
 

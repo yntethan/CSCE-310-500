@@ -32,6 +32,14 @@ CREATE TABLE College_Student (
     FOREIGN KEY (UIN) REFERENCES Users(UIN)
 );
 
+-- Classes Table
+CREATE TABLE Classes (
+    Class_ID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Description VARCHAR(255),
+    Type VARCHAR(255)
+);
+
 -- Class_Enrollment Table
 CREATE TABLE Class_Enrollment (
     CE_NUM INT PRIMARY KEY,
@@ -44,12 +52,12 @@ CREATE TABLE Class_Enrollment (
     FOREIGN KEY (Class_ID) REFERENCES Classes(Class_ID)
 );
 
--- Classes Table
-CREATE TABLE Classes (
-    Class_ID INT PRIMARY KEY,
+-- Internship Table
+CREATE TABLE Internship (
+    Intern_ID INT PRIMARY KEY,
     Name VARCHAR(255),
     Description VARCHAR(255),
-    Type VARCHAR(255)
+    Is_Gov BOOLEAN
 );
 
 -- Intern_App Table
@@ -63,12 +71,19 @@ CREATE TABLE Intern_App (
     FOREIGN KEY (Intern_ID) REFERENCES Internship(Intern_ID)
 );
 
--- Internship Table
-CREATE TABLE Internship (
-    Intern_ID INT PRIMARY KEY,
+-- Programs Table
+CREATE TABLE Programs (
+    Program_Num INT PRIMARY KEY,
     Name VARCHAR(255),
-    Description VARCHAR(255),
-    Is_Gov BOOLEAN
+    Description VARCHAR(255)
+);
+
+-- Certification Table
+CREATE TABLE Certification (
+    Cert_ID INT PRIMARY KEY,
+    Level VARCHAR(255),
+    Name VARCHAR(255),
+    Description VARCHAR(255)
 );
 
 -- Cert_Enrollment Table
@@ -86,14 +101,6 @@ CREATE TABLE Cert_Enrollment (
     FOREIGN KEY (Program_Num) REFERENCES Programs(Program_Num)
 );
 
--- Certification Table
-CREATE TABLE Certification (
-    Cert_ID INT PRIMARY KEY,
-    Level VARCHAR(255),
-    Name VARCHAR(255),
-    Description VARCHAR(255)
-);
-
 -- Track Table
 CREATE TABLE Track (
     Program_Num INT,
@@ -102,13 +109,6 @@ CREATE TABLE Track (
     PRIMARY KEY (Program_Num, Student_Num, Tracking_Num),
     FOREIGN KEY (Program_Num) REFERENCES Programs(Program_Num),
     FOREIGN KEY (Student_Num) REFERENCES Users(UIN)
-);
-
--- Programs Table
-CREATE TABLE Programs (
-    Program_Num INT PRIMARY KEY,
-    Name VARCHAR(255),
-    Description VARCHAR(255)
 );
 
 -- Applications Table
