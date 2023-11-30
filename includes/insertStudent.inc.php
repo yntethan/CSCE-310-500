@@ -10,7 +10,7 @@
     $email = $_POST['email'];
     $discord = $_POST['discord'];
 
-    $sql =  "INSERT INTO Users (UIN, First_Name, M_Initial, Last_Name, Username, Passwords, User_Type, Email, Discord_Name)
-    VALUES ('$UIN', '$first', '$mi', '$last', '$username', '$password', 'Admin', '$email', '$discord');";
+    $sql =  "INSERT INTO Users (UIN, First_Name, M_Initial, Last_Name, Username, Passwords, User_Type, Email, Discord_Name) 
+    VALUES ('$UIN', '$first', '$mi', '$last', '$username', '$password', 'Student', '$email', '$discord');";
     mysqli_query($conn, $sql);
     header("Location: ../index.php?signup=success");
