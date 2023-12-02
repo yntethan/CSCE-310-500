@@ -5,4 +5,4 @@
 
     $sql =  "DELETE FROM Users WHERE UIN = '$UIN';";
     mysqli_query($conn, $sql);
-    header("Location: ../index.php?signup=success");
+    header("Location: ../admin.php?signup=success");

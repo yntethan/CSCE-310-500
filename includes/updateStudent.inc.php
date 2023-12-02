@@ -1,7 +1,8 @@
 <?php
+    session_start();
     include_once 'dbh.inc.php';
 
-    $UIN = $_POST['uin'];
+    $UIN = $_SESSION['uin'];
     $first = $_POST['first'];
     $mi = $_POST['middle'];
     $last = $_POST['last'];
@@ -24,4 +25,4 @@
     WHERE UIN = $UIN;";
 
     mysqli_query($conn, $sql);
-    header("Location: ../admin.php?signup=success");
+    header("Location: ../student.php?signup=success");

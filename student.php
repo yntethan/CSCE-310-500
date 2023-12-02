@@ -57,6 +57,25 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <br>
 
+<h2>Update Account Information</h2>
+<form action="includes/updateStudent.inc.php" method="POST">
+        <input type="text" name="first" placeholder="First Name">
+        <br>
+        <input type="text" name="middle" placeholder="Middle Initial">
+        <br>
+        <input type="text" name="last" placeholder="Last Name">
+        <br>
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <input type="text" name="password" placeholder="Password">
+        <br>
+        <input type="text" name="email" placeholder="Email">
+        <br>
+        <input type="text" name="discord" placeholder="Discord Name">
+        <br>
+        <button type="submit" name="submit">Update Information</button>
+    </form>
+
 <h2>Create New Account</h2>
     <form action="includes/insertStudent.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -75,17 +94,12 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <input type="text" name="discord" placeholder="Discord Name">
         <br>
-        <button type="submit" name="submit">Add new admin</button>
+        <button type="submit" name="submit">Add new account</button>
     </form>
     <br>
 
     <h2>Deactivate account</h2>
-    <form action="includes/removeAccess.inc.php" method="POST">
-        <input type="text" name="uin" placeholder="UIN">
-        <br>
-        <button type="submit" name="submit">Deactivate</button>
-    </form>
-    <br>
+    <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
 
 
 </body>

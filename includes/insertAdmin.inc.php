@@ -13,4 +13,4 @@
     $sql =  "INSERT INTO Users (UIN, First_Name, M_Initial, Last_Name, Username, Passwords, User_Type, Email, Discord_Name)
     VALUES ('$UIN', '$first', '$mi', '$last', '$username', '$password', 'Admin', '$email', '$discord');";
     mysqli_query($conn, $sql);
-    header("Location: ../index.php?signup=success");
+    header("Location: ../admin.php?signup=success");
