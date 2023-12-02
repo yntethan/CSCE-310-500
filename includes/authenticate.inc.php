@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once 'dbh.inc.php';
-
+    
     if ( !isset($_POST['username'], $_POST['password']) ) {
         // Could not get the data that should have been sent.
         exit('Please fill both the username and password fields!');
@@ -27,19 +27,21 @@
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['uin'] = $UIN;
                 $_SESSION['userType'] = $userType;
+                var_dump($_SESSION);
 
                 //code for handling logins for admins
                 //header('Location: ../admin.php');
 
                 //code for handling logins for different user types
-                if ($_POST['userType'] === 'Admin') {
+                if ($_SESSION['userType'] === 'Admin') {
                     header('Location: ../admin.php');
-                } elseif ($_POST['userType'] === 'Student') {
+                } elseif ($_SESSION['userType'] === 'Student') {
                     header('Location: ../student.php');
                 } else {
                     // Redirect to a default page if User_Type is neither admin nor student.
                     header('Location: ../index.php');
                 }
+
                 exit();
             } else {
                 // Incorrect password
