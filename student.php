@@ -101,6 +101,101 @@ if (!isset($_SESSION['loggedin'])) {
     <h2>Deactivate account</h2>
     <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
 
+<h2>Add new progress records</h2>
+    <form action="includes/insertProgressRecords.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="class_id" placeholder="Class ID">
+        <br>
+        <input type="text" name="cert_id" placeholder="Certification ID">
+        <br>
+        <input type="text" name="status" placeholder="Status">
+        <br>
+        <input type="text" name="training_status" placeholder="Training Status">
+        <br>
+        <input type="text" name="semester" placeholder="Semester">
+        <br>
+        <input type="text" name="year" placeholder="Year">
+        <br>
+        <button type="submit" name="submit">Add new progress record</button>
+    </form>
+    <br>
+
+    <h2>Update progress records</h2>
+    <form action="includes/updateProgressRecord.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="cert_id" placeholder="Certification ID">
+        <br>
+        <input type="text" name="new_Status" placeholder="New Status">
+        <br>
+        <input type="text" name="new_training_status" placeholder="New Training Status">
+        <br>
+        <button type="submit" name="submit">update progress record</button>
+    </form>
+    <br>
+
+    <h2>View Your Progress Records</h2>
+<?php
+// Assuming $uin is already set from the session as shown above
+$stmtClass = $conn->prepare('SELECT * FROM Class_Enrollment WHERE UIN = ?');
+$stmtClass->bind_param('i', $uin);
+$stmtClass->execute();
+$resultClass = $stmtClass->get_result();
+
+if ($resultClass->num_rows > 0) {
+    echo "<h3>Class Enrollment Records</h3>";
+    echo "<table border='1'>";
+    echo "<tr><th>Class ID</th><th>Status</th><th>Semester</th><th>Year</th></tr>";
+    while($rowClass = $resultClass->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>{$rowClass['Class_ID']}</td>";
+        echo "<td>{$rowClass['Status']}</td>";
+        echo "<td>{$rowClass['Semester']}</td>";
+        echo "<td>{$rowClass['Year']}</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No class enrollment records found.";
+}
+
+$stmtCert = $conn->prepare('SELECT * FROM Cert_Enrollment WHERE UIN = ?');
+$stmtCert->bind_param('i', $uin);
+$stmtCert->execute();
+$resultCert = $stmtCert->get_result();
+
+if ($resultCert->num_rows > 0) {
+    echo "<h3>Certification Enrollment Records</h3>";
+    echo "<table border='1'>";
+    echo "<tr><th>Certification ID</th><th>Status</th><th>Training Status</th><th>Program Number</th><th>Semester</th><th>Year</th></tr>";
+    while($rowCert = $resultCert->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>{$rowCert['Cert_ID']}</td>";
+        echo "<td>{$rowCert['Status']}</td>";
+        echo "<td>{$rowCert['Training_Status']}</td>";
+        echo "<td>{$rowCert['Program_Num']}</td>";
+        echo "<td>{$rowCert['Semester']}</td>";
+        echo "<td>{$rowCert['YEAR']}</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No certification enrollment records found.";
+}
+?>
+<br>
+
+<h2>Delete Progress Records</h2>
+<form action="includes/deleteProgressRecord.inc.php" method="POST">
+    <p>Are you sure you want to delete all your progress records?</p>
+    <button type="submit" name="submit">Delete All Records</button>
+</form>
+<br>
 
 </body>
 </html>
