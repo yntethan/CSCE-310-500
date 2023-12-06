@@ -90,8 +90,20 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Delete User</button>
     </form>
-
+    <br>
     
+
+    <h2>Add a new program</h2>
+    <form action="includes/insertProgram.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="program_name" placeholder="Name">
+        <br>
+        <input type="text" name="program_desc" placeholder="Description">
+        <br>
+        <button type="submit" name="submit">Add Program</button>
+    </form>
+    <br>
 
 
 
