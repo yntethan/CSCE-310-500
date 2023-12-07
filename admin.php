@@ -105,6 +105,18 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <h2>Update a program</h2>
+    <form action="includes/updateProgram.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="program_name" placeholder="Name">
+        <br>
+        <input type="text" name="program_desc" placeholder="Description">
+        <br>
+        <button type="submit" name="submit">Update Program</button>
+    </form>
+    <br>
+
 
 
 </body>
