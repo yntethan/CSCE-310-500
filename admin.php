@@ -93,6 +93,10 @@ if (!isset($_SESSION['loggedin'])) {
     <br>
     
 
+    <h2>Programs</h2>
+    <?php include 'includes/displayPrograms.inc.php'; ?>
+    <br>
+
     <h2>Add a new program</h2>
     <form action="includes/insertProgram.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">

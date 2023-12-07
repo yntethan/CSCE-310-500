@@ -28,5 +28,5 @@ if ($result) {
 }
 
 // Close the database connection
-mysqli_close($conn);
+// mysqli_close($conn);
 ?>
