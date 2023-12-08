@@ -100,7 +100,55 @@ if (!isset($_SESSION['loggedin'])) {
 
     <h2>Deactivate account</h2>
     <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
+    <br>
 
+    <?php include 'includes/displayApps.inc.php'; ?>
+    <br>
+
+    <h2>Submit application</h2>
+    <form action="includes/insertApp.inc.php" method="POST">
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="uncom_cert" placeholder="Uncomplete Certification">
+        <br>
+        <input type="text" name="com_cert" placeholder="Complete Certification">
+        <br>
+        <input type="text" name="purpose_statement" placeholder="Purpose Statement">
+        <br>
+        <button type="submit" name="submit">Submit Application</button>
+    </form>
+    <br>
+
+    <h2>Edit application</h2>
+    <form action="includes/updateApp.inc.php" method="POST">
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="uncom_cert" placeholder="Uncomplete Certification">
+        <br>
+        <input type="text" name="com_cert" placeholder="Complete Certification">
+        <br>
+        <input type="text" name="purpose_statement" placeholder="Purpose Statement">
+        <br>
+        <button type="submit" name="submit">Update Application</button>
+    </form>
+    <br>
+
+    <h2>Delete application</h2>
+    <form action="includes/deleteApp.inc.php" method="POST">
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <button type="submit" name="submit">Delete Application</button>
+    </form>
+    <br>
+                   
 <h2>Add new progress records</h2>
     <form action="includes/insertProgressRecords.inc.php" method="POST">
         <input type="hidden" name="uin" value="<?php echo isset($_SESSION['uin']) ? $_SESSION['uin'] : ''; ?>">
@@ -210,6 +258,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">Delete All Records</button>
 </form>
 <br>
+
 
 </body>
 </html>
