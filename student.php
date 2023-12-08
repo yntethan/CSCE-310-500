@@ -261,6 +261,13 @@ if (!isset($_SESSION['loggedin'])) {
 </form>
 <br>
 
+<!--
+Document Upload and Management
+a. Insert: Upload resumes and other documents for program opportunities.
+b. Update: Replace or edit uploaded documents.
+c. Select: View their uploaded documents.
+d. Delete: Remove a specific document.
+//-->
 
 </body>
 </html>

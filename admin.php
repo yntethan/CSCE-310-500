@@ -203,5 +203,56 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Delete Record</button>
     </form>
     <br>
+    
+    <h2>Create an event for various programs</h2>
+    <form action="includes/insertEvent.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="date" name="start_date" placeholder="Start Date">
+        <br>
+        <input type="date" name="end_date" placeholder="End Date">
+        <br>
+        <input type="text" name="location" placeholder="Location">
+        <br>
+        <input type="time" name="end_time" placeholder="End Time">
+        <br>
+        <input type="text" name="event_type" placeholder="Event Type">
+        <br>
+        <button type="submit" name="submit">Create Event</button>
+    </form>
+    <br>
+
+    <h2>Edit an event's details, including student attendance information</h2>
+    <form action="includes/updateEvent.inc.php" method="POST">
+        <input type="text" name="event_id" placeholder="Event ID">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="date" name="start_date" placeholder="Start Date">
+        <br>
+        <input type="date" name="end_date" placeholder="End Date">
+        <br>
+        <input type="text" name="location" placeholder="Location">
+        <br>
+        <input type="time" name="end_time" placeholder="End Time">
+        <br>
+        <input type="text" name="event_type" placeholder="Event Type">
+        <br>
+        <button type="submit" name="submit">Update Event</button>
+    </form>
+    <br>
+
+    <h2>Retrieve information for each event</h2>
+    <?php include 'includes/displayEvents.inc.php'; ?>
+    <br>
+
+    <h2>Remove an event</h2>
+    <form action="includes/deleteEvent.inc.php" method="POST">
+        <input type="text" name="event_id" placeholder="Event ID">
+        <br>
+        <button type="submit" name="submit">Remove Event</button>
+    </form>
+    <br>
+
 </body>
 </html>
