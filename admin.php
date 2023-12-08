@@ -90,10 +90,52 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Delete User</button>
     </form>
-
+    <br>
     
 
+    <h2>Programs</h2>
+    <?php include 'includes/displayPrograms.inc.php'; ?>
+    <br>
 
+    <h2>Add a new program</h2>
+    <form action="includes/insertProgram.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="program_name" placeholder="Name">
+        <br>
+        <input type="text" name="program_desc" placeholder="Description">
+        <br>
+        <button type="submit" name="submit">Add Program</button>
+    </form>
+    <br>
+
+    <h2>Update a program</h2>
+    <form action="includes/updateProgram.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="program_name" placeholder="Name">
+        <br>
+        <input type="text" name="program_desc" placeholder="Description">
+        <br>
+        <button type="submit" name="submit">Update Program</button>
+    </form>
+    <br>
+
+    <h2>Remove access to a program</h2>
+    <form action="includes/removeProgramAccess.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <button type="submit" name="submit">Remove Program Access</button>
+    </form>
+    <br>
+
+    <h2>Delete a program from the system</h2>
+    <form action="includes/deleteProgram.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <button type="submit" name="submit">Delete Program</button>
+    </form>
+    <br>
 
 </body>
 </html>
