@@ -100,7 +100,25 @@ if (!isset($_SESSION['loggedin'])) {
 
     <h2>Deactivate account</h2>
     <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
+    <br>
 
+    <h2>Submit application</h2>
+    <form action="includes/insertApp.inc.php" method="POST">
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="uncom_cert" placeholder="Uncomplete Certification">
+        <br>
+        <input type="text" name="com_cert" placeholder="Complete Certification">
+        <br>
+        <input type="text" name="purpose_statement" placeholder="Purpose Statement">
+        <br>
+        <button type="submit" name="submit">Submit Application</button>
+
+    </form>
 
 </body>
 </html>
