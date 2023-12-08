@@ -14,6 +14,36 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 
+<?php
+session_start();
+include_once 'dbh.inc.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $app_num_value = $_POST['app_num'];
+    $link_value = "uploads/" . basename($_FILES["document"]["name"]);  // Assuming you have an "uploads" directory
+    $doc_type_value = pathinfo($link_value, PATHINFO_EXTENSION);
+
+    move_uploaded_file($_FILES["document"]["tmp_name"], $link_value);
+
+    $stmt = $conn->prepare('INSERT INTO Document (App_Num, Link, Doc_Type) VALUES (?, ?, ?)');
+    $stmt->bind_param('iss', $app_num_value, $link_value, $doc_type_value);
+
+    if ($stmt->execute()) {
+        header("Location: ../your_documents_page.php?success=Document uploaded successfully");
+        exit();
+    } else {
+        header("Location: ../your_documents_page.php?error=Error uploading document");
+        exit();
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    header("Location: ../your_documents_page.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

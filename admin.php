@@ -14,6 +14,121 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 
+<?php
+session_start();
+include_once 'dbh.inc.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $program_num_value = $_POST['program_num_value'];
+    $start_date_value = $_POST['start_date_value'];
+    $end_date_value = $_POST['end_date_value'];
+    $location_value = $_POST['location_value'];
+    $end_time_value = $_POST['end_time_value'];
+    $event_type_value = $_POST['event_type_value'];
+
+    $stmt = $conn->prepare('INSERT INTO Event (Program_Num, Start_Date, End_Date, Location, End_Time, Event_Type) 
+                            VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->bind_param('ississ', $program_num_value, $start_date_value, $end_date_value, $location_value, $end_time_value, $event_type_value);
+
+    if ($stmt->execute()) {
+        header("Location: ../your_events_page.php?success=Event inserted successfully");
+        exit();
+    } else {
+        header("Location: ../your_events_page.php?error=Error inserting event");
+        exit();
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    header("Location: ../your_events_page.php");
+    exit();
+}
+?>
+
+<?php
+session_start();
+include_once 'dbh.inc.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $target_event_id = $_POST['target_event_id'];
+    $updated_program_num = $_POST['updated_program_num'];
+    $updated_start_date = $_POST['updated_start_date'];
+    $updated_end_date = $_POST['updated_end_date'];
+    $updated_location = $_POST['updated_location'];
+    $updated_end_time = $_POST['updated_end_time'];
+    $updated_event_type = $_POST['updated_event_type'];
+
+    $stmt = $conn->prepare('UPDATE Event SET Program_Num = ?, Start_Date = ?, End_Date = ?, Location = ?, 
+                            End_Time = ?, Event_Type = ? WHERE Event_ID = ?');
+    $stmt->bind_param('ississsi', $updated_program_num, $updated_start_date, $updated_end_date, $updated_location, 
+                      $updated_end_time, $updated_event_type, $target_event_id);
+
+    if ($stmt->execute()) {
+        header("Location: ../your_events_page.php?success=Event updated successfully");
+        exit();
+    } else {
+        header("Location: ../your_events_page.php?error=Error updating event");
+        exit();
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    header("Location: ../your_events_page.php");
+    exit();
+}
+?>
+
+<?php
+session_start();
+include_once 'dbh.inc.php';
+
+$stmt = $conn->prepare('SELECT * FROM Event');
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Display event information as needed
+        echo "Event ID: {$row['Event_ID']}, Program Num: {$row['Program_Num']}, Start Date: {$row['Start_Date']}, 
+              End Date: {$row['End_Date']}, Location: {$row['Location']}, End Time: {$row['End_Time']}, 
+              Event Type: {$row['Event_Type']}<br>";
+    }
+} else {
+    echo "No events found.";
+}
+
+$stmt->close();
+$conn->close();
+?>
+
+<?php
+session_start();
+include_once 'dbh.inc.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $target_event_id = $_POST['target_event_id'];
+
+    $stmt = $conn->prepare('DELETE FROM Event WHERE Event_ID = ?');
+    $stmt->bind_param('i', $target_event_id);
+
+    if ($stmt->execute()) {
+        header("Location: ../your_events_page.php?success=Event deleted successfully");
+        exit();
+    } else {
+        header("Location: ../your_events_page.php?error=Error deleting event");
+        exit();
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    header("Location: ../your_events_page.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -203,7 +318,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Delete Record</button>
     </form>
     <br>
-    
+
     <h2>Create an event for various programs</h2>
     <form action="includes/insertEvent.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
