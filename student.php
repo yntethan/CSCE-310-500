@@ -261,13 +261,61 @@ if (!isset($_SESSION['loggedin'])) {
 </form>
 <br>
 
-<!--
-Document Upload and Management
-a. Insert: Upload resumes and other documents for program opportunities.
-b. Update: Replace or edit uploaded documents.
-c. Select: View their uploaded documents.
-d. Delete: Remove a specific document.
-//-->
+<!-- Document Upload and Management -->
+<h2>Document Upload and Management</h2>
+
+<!-- a. Insert: Upload resumes and other documents for program opportunities -->
+<form action="includes/uploadDocument.inc.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="app_num" value="<?php echo isset($_SESSION['app_num']) ? $_SESSION['app_num'] : ''; ?>">
+    <label for="document">Select Document to Upload:</label>
+    <input type="file" name="document" id="document">
+    <br>
+    <button type="submit" name="submit">Upload Document</button>
+</form>
+
+<!-- b. Update: Replace or edit uploaded documents -->
+<h2>Edit Uploaded Documents</h2>
+<form action="includes/updateDocument.inc.php" method="POST">
+    <label for="doc_num">Document Number:</label>
+    <input type="text" name="doc_num" placeholder="Document Number">
+    <br>
+    <label for="updated_document">Select Document to Replace:</label>
+    <input type="file" name="updated_document" id="updated_document">
+    <br>
+    <button type="submit" name="submit">Update Document</button>
+</form>
+
+<!-- c. Select: View their uploaded documents -->
+<h2>View Uploaded Documents</h2>
+<?php
+    $stmtDocument = $conn->prepare('SELECT * FROM Document WHERE App_Num = ?');
+    $stmtDocument->bind_param('i', $_SESSION['app_num']);
+    $stmtDocument->execute();
+    $resultDocument = $stmtDocument->get_result();
+    if ($resultDocument->num_rows > 0) {
+        echo "<table border='1'>";
+        echo "<tr><th>Document Number</th><th>Link</th><th>Document Type</th></tr>";
+        while($rowDocument = $resultDocument->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>{$rowDocument['Doc_Num']}</td>";
+            echo "<td>{$rowDocument['Link']}</td>";
+            echo "<td>{$rowDocument['Doc_Type']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "No documents uploaded.";
+    }
+?>
+
+<!-- d. Delete: Remove a specific document -->
+<h2>Delete Document</h2>
+<form action="includes/deleteDocument.inc.php" method="POST">
+    <p>Enter the Document Number to delete:</p>
+    <input type="text" name="doc_num" placeholder="Document Number">
+    <br>
+    <button type="submit" name="submit">Delete Document</button>
+</form>
 
 </body>
 </html>
