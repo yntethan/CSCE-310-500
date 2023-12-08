@@ -5,4 +5,4 @@
 
     $sql =  "DELETE FROM Applications WHERE App_Num = '$App_Num';";
     mysqli_query($conn, $sql);
-    header("Location: ../admin.php?signup=success");
+    header("Location: ../student.php?signup=success");

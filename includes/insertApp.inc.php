@@ -11,4 +11,4 @@
     $sql =  "INSERT INTO Applications (App_Num, Program_Num, UIN, Uncom_Cert, Com_Cert, Purpose_Statement) 
     VALUES ('$App_Num', '$Program_Num', '$UIN', '$Uncom_Cert', '$Com_Cert', '$Purpose_Statement');";
     mysqli_query($conn, $sql);
-    header("Location: ../index.php?signup=success");
+    header("Location: ../student.php?signup=success");

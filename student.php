@@ -101,7 +101,9 @@ if (!isset($_SESSION['loggedin'])) {
     <h2>Deactivate account</h2>
     <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
     <br>
+    <br>
 
+    <h2>Application Information</h2>
     <?php include 'includes/displayApps.inc.php'; ?>
     <br>
 
