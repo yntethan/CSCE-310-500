@@ -9,17 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $stmt->bind_param('i', $target_event_id);
 
     if ($stmt->execute()) {
-        header("Location: ../your_events_page.php?success=Event deleted successfully");
+        header("Location: ../admin.php?deletion=success");
         exit();
     } else {
-        header("Location: ../your_events_page.php?error=Error deleting event");
+        header("Location: ../admin.php?error");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../your_events_page.php");
+    header("Location: ../admin.php");
     exit();
 }
 ?>

@@ -31,17 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $stmt->bind_param('ississ', $program_num_value, $start_date_value, $end_date_value, $location_value, $end_time_value, $event_type_value);
 
     if ($stmt->execute()) {
-        header("Location: ../your_events_page.php?success=Event inserted successfully");
+        header("Location: admin.php?success");
         exit();
     } else {
-        header("Location: ../your_events_page.php?error=Error inserting event");
+        header("Location: admin.php?error");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../your_events_page.php");
+    header("Location: admin.php");
     exit();
 }
 ?>
@@ -65,17 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                       $updated_end_time, $updated_event_type, $target_event_id);
 
     if ($stmt->execute()) {
-        header("Location: ../your_events_page.php?success=Event updated successfully");
+        header("Location: admin.php");
         exit();
     } else {
-        header("Location: ../your_events_page.php?error=Error updating event");
+        header("Location: admin.php");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../your_events_page.php");
+    header("Location: admin.php");
     exit();
 }
 ?>
@@ -114,17 +114,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $stmt->bind_param('i', $target_event_id);
 
     if ($stmt->execute()) {
-        header("Location: ../your_events_page.php?success=Event deleted successfully");
+        header("Location: admin.php");
         exit();
     } else {
-        header("Location: ../your_events_page.php?error=Error deleting event");
+        header("Location: admin.php");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../your_events_page.php");
+    header("Location: admin.php");
     exit();
 }
 ?>
