@@ -104,7 +104,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     <?php include 'includes/displayApps.inc.php'; ?>
     <br>
-    
+
     <h2>Submit application</h2>
     <form action="includes/insertApp.inc.php" method="POST">
         <input type="text" name="app_num" placeholder="Application Number">
@@ -138,6 +138,14 @@ if (!isset($_SESSION['loggedin'])) {
         <input type="text" name="purpose_statement" placeholder="Purpose Statement">
         <br>
         <button type="submit" name="submit">Update Application</button>
+    </form>
+    <br>
+
+    <h2>Delete application</h2>
+    <form action="includes/deleteApp.inc.php" method="POST">
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <button type="submit" name="submit">Delete Application</button>
     </form>
     <br>
 
