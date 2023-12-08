@@ -121,11 +121,19 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <h2>Remove access to a program</h2>
+    <form action="includes/removeProgramAccess.inc.php" method="POST">
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <button type="submit" name="submit">Remove Program Access</button>
+    </form>
+    <br>
+
     <h2>Delete a program from the system</h2>
     <form action="includes/deleteProgram.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
         <br>
-        <button type="submit" name="submit">Delete User</button>
+        <button type="submit" name="submit">Delete Program</button>
     </form>
     <br>
 
