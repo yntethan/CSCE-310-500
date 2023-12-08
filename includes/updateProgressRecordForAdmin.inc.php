@@ -23,5 +23,5 @@
     $stmt2->execute();
 
     // Redirect after successful update
-    header("Location: ../student.php?update=success");
+    header("Location: ../admin.php?update=success");
     ?>

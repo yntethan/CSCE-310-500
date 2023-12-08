@@ -90,7 +90,6 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Delete User</button>
     </form>
-    <br>
     
 
     <h2>Programs</h2>
@@ -137,5 +136,72 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+   <h2>Record a student's progress within a program</h2>
+    <form action="includes/insertProgressRecord.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="prog_num" placeholder="Program number">
+        <br>
+        <input type="text" name="class_ID" placeholder="Class ID">
+        <br>
+        <input type="text" name="cert_ID" placeholder="Cert ID">
+        <br>
+        <input type="text" name="stat" placeholder="Status">
+        <br>
+        <input type="text" name="training_stat" placeholder="Training Status">
+        <br>
+        <input type="text" name="semester" placeholder="Semester">
+        <br>
+        <input type="text" name="year" placeholder="Year">
+        <br>
+        <button type="submit" name="submit">Record Student's Progress</button>
+    </form>
+    <br>
+
+    <h2>Update progress records</h2>
+    <form action="includes/updateProgressRecordForAdmin.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="UIN">
+        <br>
+        <input type="text" name="program_num" placeholder="Program Number">
+        <br>
+        <input type="text" name="class_id" placeholder="Class ID">
+        <br>
+        <input type="text" name="cert_id" placeholder="Certification ID">
+        <br>
+        <input type="text" name="new_Status" placeholder="New Status">
+        <br>
+        <input type="text" name="new_training_status" placeholder="New Training Status">
+        <br>
+        <button type="submit" name="submit">update progress record</button>
+    </form>
+    <br>
+
+    <h2>View Student's Progress Records</h2>
+    <form action="includes/viewProgressRecords.inc.php" method="POST">
+        <input type="text" name="uin" placeholder="Enter Student UIN">
+        <button type="submit" name="submit">View Records</button>
+    <br>
+  
+    <h2>Delete Class Enrollment Records</h2>
+    <form action="includes/deleteClassAdmin.inc.php" method="POST">
+        <p>Are you sure you want to delete this progress record?</p>
+        <input type="text" name="UIN" placeholder="UIN">
+        <br>
+        <input type="text" name="class_ID" placeholder="class ID">
+        <br>
+        <button type="submit" name="submit">Delete Record</button>
+    </form>
+    <br>
+
+    <h2>Delete Certification Enrollment Records</h2>
+    <form action="includes/deleteCertAdmin.inc.php" method="POST">
+        <p>Are you sure you want to delete this progress record?</p>
+        <input type="text" name="UIN" placeholder="UIN">
+        <br>
+        <input type="text" name="prog_num" placeholder="program number">
+        <br>
+        <button type="submit" name="submit">Delete Record</button>
+    </form>
+    <br>
 </body>
 </html>

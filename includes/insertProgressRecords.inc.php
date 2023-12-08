@@ -16,5 +16,5 @@
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param("iissssi", $UIN, $certID, $stat, $trainingStat, $progNum, $semester, $whatYear);
     $stmt2->execute();
-    header("Location: ../index.php?signup=success");
+    header("Location: ../student.php?signup=success");
     ?>
