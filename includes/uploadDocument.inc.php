@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     $stmt->close();
-    $conn->close();
 }
 ?>
 
