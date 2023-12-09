@@ -6,14 +6,14 @@ ini_set('display_errors', 1);
 include_once 'dbh.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $documentName = $_POST['documentName'];
-    $documentType = $_POST['documentType'];
-    $documentContent = $_POST['documentContent'];
+    $appNum = $_POST['appNum']; // Assuming you have this input in your form
+    $link = $_POST['link'];
+    $docType = $_POST['docType'];
 
     // Validate and sanitize input as needed
 
-    $stmt = $conn->prepare('INSERT INTO Documents (documentName, documentType, documentContent) VALUES (?, ?, ?)');
-    $stmt->bind_param('sss', $documentName, $documentType, $documentContent);
+    $stmt = $conn->prepare('INSERT INTO Document (App_Num, Link, Doc_Type) VALUES (?, ?, ?)');
+    $stmt->bind_param('iss', $appNum, $link, $docType); // Assuming App_Num is an integer, adjust 'iss' accordingly
 
     if ($stmt->execute()) {
         echo 'Document uploaded successfully.';
