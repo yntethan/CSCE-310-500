@@ -238,7 +238,9 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Joshua Yan-->
     <h2>Edit an event's details, including student attendance information</h2>
+    <p>Enter the fields to be updated (other than Event ID, only fill out fields to be updated; can leave fields blank if no change)</p>
     <form action="includes/updateEvent.inc.php" method="POST">
         <input type="text" name="event_id" placeholder="Event ID">
         <br>
@@ -249,6 +251,8 @@ if (!isset($_SESSION['loggedin'])) {
         <input type="date" name="end_date" placeholder="End Date">
         <br>
         <input type="text" name="location" placeholder="Location">
+        <br>
+        <input type="time" name="start_time" placeholder="Start Time"><label for="fname"> Start Time</label>
         <br>
         <input type="time" name="end_time" placeholder="End Time">
         <br>
