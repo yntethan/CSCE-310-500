@@ -1,22 +1,30 @@
 <?php
-session_start();
 include_once 'dbh.inc.php';
 
-$stmt = $conn->prepare('SELECT * FROM Event');
-$stmt->execute();
-$result = $stmt->get_result();
+$query = "SELECT * FROM Event";
+$result = mysqli_query($conn, $query);
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        // Display event information as needed
-        echo "Event ID: {$row['Event_ID']}, Program Num: {$row['Program_Num']}, Start Date: {$row['Start_Date']}, 
-              End Date: {$row['End_Date']}, Location: {$row['Location']}, End Time: {$row['End_Time']}, 
-              Event Type: {$row['Event_Type']}<br>";
+if ($result) {
+    echo "<table border='1'>";
+    echo "<tr><th>Event ID</th><th>UIN</th><th>Program Number</th><th>Start Date</th><th>Start Time</th><th>Location</th><th>End Date</th><th>End Time</th><th>Event Type</th></tr>";
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['Event_ID']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['UIN']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Program_Num']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Start_Date']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Start_Time']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Location']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['End_Date']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['End_Time']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['Event_Type']) . "</td>";
+        echo "</tr>";
     }
+
+    echo "</table>";
 } else {
-    echo "No events found.";
+    echo "Error: " . mysqli_error($conn);
 }
 
-$stmt->close();
-$conn->close();
 ?>
