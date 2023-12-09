@@ -1,33 +1,28 @@
 <?php
-session_start();
-include_once 'dbh.inc.php';
+    session_start();
+    include_once 'dbh.inc.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $target_event_id = $_POST['target_event_id'];
-    $updated_program_num = $_POST['updated_program_num'];
-    $updated_start_date = $_POST['updated_start_date'];
-    $updated_end_date = $_POST['updated_end_date'];
-    $updated_location = $_POST['updated_location'];
-    $updated_end_time = $_POST['updated_end_time'];
-    $updated_event_type = $_POST['updated_event_type'];
+    $event_id = $_POST['event_id'];
+    $program_num = $_POST['program_num'];
+    $UIN = $_SESSION['uin'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $location = $_POST['location'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
+    $event_type = $_POST['event_type'];
 
-    $stmt = $conn->prepare('UPDATE Event SET Program_Num = ?, Start_Date = ?, End_Date = ?, Location = ?, 
-                            End_Time = ?, Event_Type = ? WHERE Event_ID = ?');
-    $stmt->bind_param('ississsi', $updated_program_num, $updated_start_date, $updated_end_date, $updated_location, 
-                      $updated_end_time, $updated_event_type, $target_event_id);
+    $sql = "UPDATE Event
+    SET
+        UIN = COALESCE(NULLIF('$UIN', ''), UIN),
+        Program_Num = COALESCE(NULLIF('$program_num', ''), Program_Num),
+        Start_Date = COALESCE(NULLIF('$start_date', ''), Start_Date),
+        Start_Time = COALESCE(NULLIF('$start_time', ''), Start_Time),
+        Location = COALESCE(NULLIF('$location', ''), Location),
+        End_Date = COALESCE(NULLIF('$end_date', ''), End_Date),
+        End_Time = COALESCE(NULLIF('$end_time', ''), End_Time),
+        Event_Type = COALESCE(NULLIF('$event_type', ''), Event_Type)
+    WHERE EVENT_ID = $event_id;";
 
-    if ($stmt->execute()) {
-        header("Location: ../admin.php?update=success");
-        exit();
-    } else {
-        header("Location: ../admin.php?error");
-        exit();
-    }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    header("Location: ../admin.php");
-    exit();
-}
-?>
+    mysqli_query($conn, $sql);
+    header("Location: ../admin.php?signup=success");
