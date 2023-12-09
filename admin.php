@@ -206,16 +206,21 @@ if (!isset($_SESSION['loggedin'])) {
     <br>
 
     <h2>Create an event for various programs</h2>
+    <p>Note: Program Number must be an existing program in the database; see above programs table</p>
     <form action="includes/insertEvent.inc.php" method="POST">
+        <input type="text" name="event_id" placeholder="Event ID">
+        <br>
         <input type="text" name="program_num" placeholder="Program Number">
         <br>
-        <input type="date" name="start_date" placeholder="Start Date">
+        <input type="date" name="start_date" placeholder="Start Date"><label for="fname"> Start Date</label>
         <br>
-        <input type="date" name="end_date" placeholder="End Date">
+        <input type="date" name="end_date" placeholder="End Date"><label for="fname"> End Date</label>
         <br>
         <input type="text" name="location" placeholder="Location">
         <br>
-        <input type="time" name="end_time" placeholder="End Time">
+        <input type="time" name="start_time" placeholder="Start Time"><label for="fname"> Start Time</label>
+        <br>
+        <input type="time" name="end_time" placeholder="End Time"><label for="fname"> End Time</label>
         <br>
         <input type="text" name="event_type" placeholder="Event Type">
         <br>

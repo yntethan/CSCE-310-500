@@ -1,31 +1,18 @@
 <?php
-session_start();
-include_once 'dbh.inc.php';
+    session_start();
+    include_once 'dbh.inc.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $program_num_value = $_POST['program_num_value'];
-    $start_date_value = $_POST['start_date_value'];
-    $end_date_value = $_POST['end_date_value'];
-    $location_value = $_POST['location_value'];
-    $end_time_value = $_POST['end_time_value'];
-    $event_type_value = $_POST['event_type_value'];
+    $event_id = $_POST['event_id'];
+    $program_num = $_POST['program_num'];
+    $UIN = $_SESSION['uin'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $location = $_POST['location'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
+    $event_type = $_POST['event_type'];
 
-    $stmt = $conn->prepare('INSERT INTO Event (Program_Num, Start_Date, End_Date, Location, End_Time, Event_Type) 
-                            VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->bind_param('ississ', $program_num_value, $start_date_value, $end_date_value, $location_value, $end_time_value, $event_type_value);
-
-    if ($stmt->execute()) {
-        header("Location: ../admin.php?insertion=success");
-        exit();
-    } else {
-        header("Location: ../admin.php?error=Error inserting event");
-        exit();
-    }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    header("Location: ../admin.php");
-    exit();
-}
-?>
+    $sql =  "INSERT INTO Event (EVENT_ID, UIN, Program_Num, Start_Date, Start_Time, Location, End_Date, End_Time, Event_Type)
+    VALUES ('$event_id', '$UIN', '$program_num', '$start_date', '$start_time', '$location', '$end_date', '$end_time', '$event_type');";
+    mysqli_query($conn, $sql);
+    header("Location: ../admin.php?signup=success");
