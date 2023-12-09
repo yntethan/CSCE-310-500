@@ -1,3 +1,4 @@
+<!-- done by ethan-->
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     include_once 'dbh.inc.php'; // Database connection
