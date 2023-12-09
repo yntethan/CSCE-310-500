@@ -141,6 +141,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Michael Tao-->
    <h2>Record a student's progress within a program</h2>
     <form action="includes/insertProgressRecord.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -163,6 +164,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Michael Tao-->
     <h2>Update progress records</h2>
     <form action="includes/updateProgressRecordForAdmin.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -181,12 +183,14 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Michael Tao-->
     <h2>View Student's Progress Records</h2>
     <form action="includes/viewProgressRecords.inc.php" method="POST">
         <input type="text" name="uin" placeholder="Enter Student UIN">
         <button type="submit" name="submit">View Records</button>
     <br>
-  
+    
+    <!--Written by Michael Tao-->
     <h2>Delete Class Enrollment Records</h2>
     <form action="includes/deleteClassAdmin.inc.php" method="POST">
         <p>Are you sure you want to delete this progress record?</p>
@@ -198,6 +202,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Michael Tao-->
     <h2>Delete Certification Enrollment Records</h2>
     <form action="includes/deleteCertAdmin.inc.php" method="POST">
         <p>Are you sure you want to delete this progress record?</p>
@@ -253,6 +258,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Michael Tao-->
     <h2>Retrieve information for each event</h2>
     <?php include 'includes/displayEvents.inc.php'; ?>
     <br>
