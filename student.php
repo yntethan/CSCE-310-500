@@ -286,15 +286,6 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Upload Document</button>
 </form>
 
-<!-- b. Update: Replace or edit uploaded documents -->
-<h2>Edit Uploaded Documents</h2>
-<form action="includes/uploadDocument.inc.php" method="POST" enctype="multipart/form-data">
-    <label for="document">Select Document to Upload:</label>
-    <input type="file" name="document" id="document">
-    <br>
-    <button type="submit" name="submit">Upload Document</button>
-</form>
-
 <!-- c. Select: View their uploaded documents -->
 <h2>View Uploaded Documents</h2>
 <?php
@@ -327,6 +318,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">Delete Document</button>
 </form>
 
+<!-- done by michael-->
 <h2>Update Document Details</h2>
 <form action="includes/updateDocument.inc.php" method="POST">
     <input type="text" name="doc_num" placeholder="Document Number" required>
