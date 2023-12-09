@@ -289,6 +289,13 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Upload Document</button>
 </form>
+
+<h2>View Uploaded Documents</h2>
+<form action="includes/viewDocs.inc.php" method="POST">
+    <input type="text" name="app_num" placeholder="Enter Application Number" required>
+    <button type="submit" name="submit">View Documents</button>
+</form>
+
 <!-- done by ethan-->
 <!-- c. Select: View their uploaded documents -->
 <h2>View Uploaded Documents</h2>
