@@ -160,7 +160,8 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Delete Application</button>
     </form>
     <br>
-                   
+
+<!-- done by Michael-->
 <h2>Add new progress records</h2>
     <form action="includes/insertProgressRecords.inc.php" method="POST">
         <input type="hidden" name="uin" value="<?php echo isset($_SESSION['uin']) ? $_SESSION['uin'] : ''; ?>">
@@ -181,7 +182,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Add new progress record</button>
     </form>
     <br>
-
+<!-- done by Michael-->
     <h2>Update progress records</h2>
     <form action="includes/updateProgressRecord.inc.php" method="POST">
         <input type="hidden" name="uin" value="<?php echo isset($_SESSION['uin']) ? $_SESSION['uin'] : ''; ?>">
@@ -198,7 +199,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">update progress record</button>
     </form>
     <br>
-
+<!-- done by Michael-->
     <h2>View Your Progress Records</h2>
 <?php
     $stmtClass = $conn->prepare('SELECT * FROM Class_Enrollment WHERE UIN = ?');
@@ -246,6 +247,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <br>
 
+<!-- done by Michael-->
 <h2>Delete Class Enrollment Records</h2>
 <form action="includes/deleteSpecificProgressRecordClass.inc.php" method="POST">
     <p>Are you sure you want to delete this progress record?</p>
@@ -255,6 +257,7 @@ if (!isset($_SESSION['loggedin'])) {
 </form>
 <br>
 
+<!-- done by Michael-->
 <h2>Delete Certification Enrollment Records</h2>
 <form action="includes/deleteSpecificProgressRecordCertification.inc.php" method="POST">
     <p>Are you sure you want to delete this progress record?</p>
@@ -264,6 +267,7 @@ if (!isset($_SESSION['loggedin'])) {
 </form>
 <br>
 
+<!-- done by Michael-->
 <h2>Delete All Progress Records</h2>
 <form action="includes/deleteProgressRecord.inc.php" method="POST">
     <p>Are you sure you want to delete all your progress records?</p>
