@@ -192,6 +192,7 @@ if (!isset($_SESSION['loggedin'])) {
     <form action="includes/viewProgressRecords.inc.php" method="POST">
         <input type="text" name="uin" placeholder="Enter Student UIN">
         <button type="submit" name="submit">View Records</button>
+    </form>
     <br>
     
     <!--Written by Michael Tao-->

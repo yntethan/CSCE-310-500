@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once 'dbh.inc.php'; // Ensure the path is correct
 
 $app_num = isset($_POST['app_num']) ? $_POST['app_num'] : 0;
