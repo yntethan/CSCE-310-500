@@ -270,7 +270,7 @@ if (!isset($_SESSION['loggedin'])) {
 <!-- Document Upload and Management -->
 <h2>Document Upload</h2>
 
-<!--Written by Joshua Yan-->
+<!-- done by ethan-->
 <!-- a. Insert: Upload resumes and other documents for program opportunities -->
 <p>Upload resumes and other documents for program opportunities</p>
 <p>Note: Application Number must be an existing application in the database; see above programs table</p>
@@ -285,7 +285,7 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Upload Document</button>
 </form>
-
+<!-- done by ethan-->
 <!-- c. Select: View their uploaded documents -->
 <h2>View Uploaded Documents</h2>
 <?php
@@ -308,7 +308,7 @@ if (!isset($_SESSION['loggedin'])) {
         echo "No documents uploaded.";
     }
 ?>
-
+<!-- done by ethan-->
 <!-- d. Delete: Remove a specific document -->
 <h2>Delete Document</h2>
 <form action="includes/deleteDocument.inc.php" method="POST">
@@ -318,7 +318,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">Delete Document</button>
 </form>
 
-<!-- done by michael-->
+<!-- done by ethan-->
 <h2>Update Document Details</h2>
 <form action="includes/updateDocument.inc.php" method="POST">
     <input type="text" name="doc_num" placeholder="Document Number" required>
