@@ -1,23 +1,8 @@
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    include_once 'dbh.inc.php';
 
-include_once 'dbh.inc.php';
+    $Doc_Num = $_POST['doc_num'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $documentId = $_POST['documentId'];
-
-    $stmt = $conn->prepare('DELETE FROM Documents WHERE documentId = ?');
-    $stmt->bind_param('i', $documentId);
-
-    if ($stmt->execute()) {
-        echo 'Document deleted successfully.';
-    } else {
-        echo 'Error deleting document.';
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-?>
+    $sql =  "DELETE FROM Document WHERE Doc_Num = '$Doc_Num';";
+    mysqli_query($conn, $sql);
+    header("Location: ../student.php?signup=success");

@@ -1,25 +1,8 @@
 <?php
-session_start();
-include_once 'dbh.inc.php';
+    include_once 'dbh.inc.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $target_event_id = $_POST['target_event_id'];
+    $Event_ID = $_POST['event_id'];
 
-    $stmt = $conn->prepare('DELETE FROM Event WHERE Event_ID = ?');
-    $stmt->bind_param('i', $target_event_id);
-
-    if ($stmt->execute()) {
-        header("Location: ../admin.php?deletion=success");
-        exit();
-    } else {
-        header("Location: ../admin.php?error");
-        exit();
-    }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    header("Location: ../admin.php");
-    exit();
-}
-?>
+    $sql =  "DELETE FROM Event WHERE Event_ID = '$Event_ID';";
+    mysqli_query($conn, $sql);
+    header("Location: ../admin.php?signup=success");
