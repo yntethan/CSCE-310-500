@@ -1,4 +1,5 @@
 <?php
+// Justin Ma
 include_once 'dbh.inc.php';
 
 $query = "SELECT * FROM Programs";
