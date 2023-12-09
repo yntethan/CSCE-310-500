@@ -286,28 +286,11 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Upload Document</button>
 </form>
 
-<!-- c. Select: View their uploaded documents -->
 <h2>View Uploaded Documents</h2>
-<?php
-    $stmtDocument = $conn->prepare('SELECT * FROM Document WHERE App_Num = ?');
-    $stmtDocument->bind_param('i', $_SESSION['app_num']);
-    $stmtDocument->execute();
-    $resultDocument = $stmtDocument->get_result();
-    if ($resultDocument->num_rows > 0) {
-        echo "<table border='1'>";
-        echo "<tr><th>Document Number</th><th>Link</th><th>Document Type</th></tr>";
-        while($rowDocument = $resultDocument->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>{$rowDocument['Doc_Num']}</td>";
-            echo "<td>{$rowDocument['Link']}</td>";
-            echo "<td>{$rowDocument['Doc_Type']}</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "No documents uploaded.";
-    }
-?>
+<form action="includes/viewDocs.inc.php" method="POST">
+    <input type="text" name="app_num" placeholder="Enter Application Number" required>
+    <button type="submit" name="submit">View Documents</button>
+</form>
 
 <!-- d. Delete: Remove a specific document -->
 <h2>Delete Document</h2>
