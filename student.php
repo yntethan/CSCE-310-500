@@ -263,15 +263,21 @@ if (!isset($_SESSION['loggedin'])) {
 <br>
 
 <!-- Document Upload and Management -->
-<h2>Document Upload and Management</h2>
+<h2>Document Upload</h2>
 
 <!-- a. Insert: Upload resumes and other documents for program opportunities -->
+<p>Upload resumes and other documents for program opportunities</p>
+<p>Note: Application Number must be an existing application in the database; see above programs table</p>
 <form action="includes/uploadDocument.inc.php" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="app_num" value="<?php echo isset($_SESSION['app_num']) ? $_SESSION['app_num'] : ''; ?>">
-    <label for="document">Select Document to Upload:</label>
-    <input type="file" name="document" id="document">
-    <br>
-    <button type="submit" name="submit">Upload Document</button>
+        <input type="text" name="doc_num" placeholder="Document Number">
+        <br>
+        <input type="text" name="app_num" placeholder="Application Number">
+        <br>
+        <input type="text" name="link" placeholder="Document Link">
+        <br>
+        <input type="text" name="doc_type" placeholder="Document Type">
+        <br>
+        <button type="submit" name="submit">Upload Document</button>
 </form>
 
 <!-- b. Update: Replace or edit uploaded documents -->
