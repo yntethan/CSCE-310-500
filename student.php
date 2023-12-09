@@ -297,11 +297,6 @@ if (!isset($_SESSION['loggedin'])) {
 </form>
 
 <!-- done by ethan-->
-<!-- c. Select: View their uploaded documents -->
-<h2>View Uploaded Documents</h2>
-<?php include 'includes/displayApps.inc.php'; ?>
-
-<!-- done by ethan-->
 <!-- d. Delete: Remove a specific document -->
 <h2>Delete Document</h2>
 <form action="includes/deleteDocument.inc.php" method="POST">
