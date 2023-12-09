@@ -270,7 +270,7 @@ if (!isset($_SESSION['loggedin'])) {
 <!-- Document Upload and Management -->
 <h2>Document Upload</h2>
 
-<!--Written by Joshua Yan-->
+<!-- done by ethan-->
 <!-- a. Insert: Upload resumes and other documents for program opportunities -->
 <p>Upload resumes and other documents for program opportunities</p>
 <p>Note: Application Number must be an existing application in the database; see above programs table</p>
@@ -285,6 +285,7 @@ if (!isset($_SESSION['loggedin'])) {
         <br>
         <button type="submit" name="submit">Upload Document</button>
 </form>
+<<<<<<< HEAD
 
 <h2>View Uploaded Documents</h2>
 <form action="includes/viewDocs.inc.php" method="POST">
@@ -292,6 +293,32 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">View Documents</button>
 </form>
 
+=======
+<!-- done by ethan-->
+<!-- c. Select: View their uploaded documents -->
+<h2>View Uploaded Documents</h2>
+<?php
+    $stmtDocument = $conn->prepare('SELECT * FROM Document WHERE App_Num = ?');
+    $stmtDocument->bind_param('i', $_SESSION['app_num']);
+    $stmtDocument->execute();
+    $resultDocument = $stmtDocument->get_result();
+    if ($resultDocument->num_rows > 0) {
+        echo "<table border='1'>";
+        echo "<tr><th>Document Number</th><th>Link</th><th>Document Type</th></tr>";
+        while($rowDocument = $resultDocument->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>{$rowDocument['Doc_Num']}</td>";
+            echo "<td>{$rowDocument['Link']}</td>";
+            echo "<td>{$rowDocument['Doc_Type']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "No documents uploaded.";
+    }
+?>
+<!-- done by ethan-->
+>>>>>>> b15d5f0d64193b228485065687739ea6fb805fb7
 <!-- d. Delete: Remove a specific document -->
 <h2>Delete Document</h2>
 <form action="includes/deleteDocument.inc.php" method="POST">
@@ -301,7 +328,7 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">Delete Document</button>
 </form>
 
-<!-- done by michael-->
+<!-- done by ethan-->
 <h2>Update Document Details</h2>
 <form action="includes/updateDocument.inc.php" method="POST">
     <input type="text" name="doc_num" placeholder="Document Number" required>
