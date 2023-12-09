@@ -96,11 +96,12 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Delete User</button>
     </form>
     
-
+    <!--Written by Justin Ma-->
     <h2>Programs</h2>
     <?php include 'includes/displayPrograms.inc.php'; ?>
     <br>
 
+    <!--Written by Justin Ma-->
     <h2>Add a new program</h2>
     <form action="includes/insertProgram.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
@@ -113,6 +114,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Justin Ma-->
     <h2>Update a program</h2>
     <form action="includes/updateProgram.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
@@ -125,6 +127,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Justin Ma-->
     <h2>Remove access to a program</h2>
     <form action="includes/removeProgramAccess.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
@@ -133,6 +136,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Justin Ma-->
     <h2>Delete a program from the system</h2>
     <form action="includes/deleteProgram.inc.php" method="POST">
         <input type="text" name="program_num" placeholder="Program Number">
