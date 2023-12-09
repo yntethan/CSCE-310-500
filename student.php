@@ -305,14 +305,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 <!-- b. Update: Replace or edit uploaded documents -->
 <h2>Edit Uploaded Documents</h2>
-<form action="includes/updateDocument.inc.php" method="POST">
-    <label for="doc_num">Document Number:</label>
-    <input type="text" name="doc_num" placeholder="Document Number">
+<form action="includes/uploadDocument.inc.php" method="POST" enctype="multipart/form-data">
+    <label for="document">Select Document to Upload:</label>
+    <input type="file" name="document" id="document">
     <br>
-    <label for="updated_document">Select Document to Replace:</label>
-    <input type="file" name="updated_document" id="updated_document">
-    <br>
-    <button type="submit" name="submit">Update Document</button>
+    <button type="submit" name="submit">Upload Document</button>
 </form>
 
 <!-- c. Select: View their uploaded documents -->

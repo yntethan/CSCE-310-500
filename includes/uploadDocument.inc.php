@@ -6,22 +6,25 @@ ini_set('display_errors', 1);
 include_once 'dbh.inc.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $appNum = $_POST['appNum']; // Assuming you have this input in your form
-    $link = $_POST['link'];
-    $docType = $_POST['docType'];
-
+    $documentId = $_POST['documentId'];
+    $documentName = $_POST['documentName'];
+    $documentType = $_POST['documentType'];
+    
     // Validate and sanitize input as needed
 
-    $stmt = $conn->prepare('INSERT INTO Document (App_Num, Link, Doc_Type) VALUES (?, ?, ?)');
-    $stmt->bind_param('iss', $appNum, $link, $docType); // Assuming App_Num is an integer, adjust 'iss' accordingly
+    $documentContent = file_get_contents($_FILES['documentContent']['tmp_name']);
+
+    $stmt = $conn->prepare('UPDATE Documents SET documentName = ?, documentType = ?, documentContent = ? WHERE documentId = ?');
+    $stmt->bind_param('sssi', $documentName, $documentType, $documentContent, $documentId);
 
     if ($stmt->execute()) {
-        echo 'Document uploaded successfully.';
+        echo 'Document updated successfully.';
     } else {
-        echo 'Error uploading document.';
+        echo 'Error updating document.';
     }
 
     $stmt->close();
     $conn->close();
 }
 ?>
+
