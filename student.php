@@ -24,6 +24,8 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
 <a href="includes/logout.inc.php">Logout</a>
+
+<!--Written by Joshua Yan-->
 <h2>User Information</h2>
 <?php
   include_once 'includes/dbh.inc.php';
@@ -58,6 +60,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <br>
 
+<!--Written by Joshua Yan-->
 <h2>Update Account Information</h2>
 <form action="includes/updateStudent.inc.php" method="POST">
         <input type="text" name="first" placeholder="First Name">
@@ -77,6 +80,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Update Information</button>
     </form>
 
+<!--Written by Joshua Yan-->
 <h2>Create New Account</h2>
     <form action="includes/insertStudent.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -98,7 +102,8 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" name="submit">Add new account</button>
     </form>
     <br>
-
+    
+    <!--Written by Joshua Yan-->
     <h2>Deactivate account</h2>
     <a href="includes/removeStudentAccess.inc.php">Deactivate</a>
     <br>
@@ -265,6 +270,7 @@ if (!isset($_SESSION['loggedin'])) {
 <!-- Document Upload and Management -->
 <h2>Document Upload</h2>
 
+<!--Written by Joshua Yan-->
 <!-- a. Insert: Upload resumes and other documents for program opportunities -->
 <p>Upload resumes and other documents for program opportunities</p>
 <p>Note: Application Number must be an existing application in the database; see above programs table</p>

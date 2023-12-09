@@ -1,5 +1,6 @@
+
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -28,6 +29,7 @@ if (!isset($_SESSION['loggedin'])) {
     <?php include 'includes/displayUsers.inc.php'; ?>
     <br>
 
+    <!--Written by Joshua Yan-->
     <h2>Add an admin to the system</h2>
     <form action="includes/insertAdmin.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -50,6 +52,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Joshua Yan-->
     <h2>Update information of a user in the system</h2>
     <p>Enter the fields to be updated (other than UIN, only fill out fields to be updated; can leave fields blank if no change)</p>
     <form action="includes/updateUser.inc.php" method="POST">
@@ -75,6 +78,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Joshua Yan-->
     <h2>Remove a user's access from the system</h2>
     <form action="includes/removeAccess.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -84,7 +88,7 @@ if (!isset($_SESSION['loggedin'])) {
     <br>
 
 
-
+    <!--Written by Joshua Yan-->
     <h2>Delete a user from the system</h2>
     <form action="includes/fullDelete.inc.php" method="POST">
         <input type="text" name="uin" placeholder="UIN">
@@ -205,6 +209,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
+    <!--Written by Joshua Yan-->
     <h2>Create an event for various programs</h2>
     <p>Note: Program Number must be an existing program in the database; see above programs table</p>
     <form action="includes/insertEvent.inc.php" method="POST">

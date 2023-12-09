@@ -1,3 +1,4 @@
+<!--Written by Joshua Yan-->
 <?php
 session_start();
 session_destroy();
