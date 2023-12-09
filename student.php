@@ -327,6 +327,20 @@ if (!isset($_SESSION['loggedin'])) {
     <button type="submit" name="submit">Delete Document</button>
 </form>
 
+<h2>Update Document Details</h2>
+<form action="includes/updateDocument.inc.php" method="POST">
+    <input type="text" name="doc_num" placeholder="Document Number" required>
+    <br>
+    <input type="text" name="updated_app_num" placeholder="Application Number" required>
+    <br>
+    <input type="text" name="updated_link" placeholder="Updated Document Link" required>
+    <br>
+    <input type="text" name="updated_doc_type" placeholder="Updated Document Type" required>
+    <br>
+    <button type="submit" name="submit">Update Document</button>
+</form>
+
+
 </body>
 </html>
 

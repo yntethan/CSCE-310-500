@@ -10,5 +10,5 @@
     $sql =  "INSERT INTO Document (Doc_Num, App_Num, Link, Doc_Type)
     VALUES ('$doc_num','$app_num','$link','$doc_type');";
     mysqli_query($conn, $sql);
-    header("Location: ../admin.php?signup=success");
+    header("Location: ../student.php?signup=success");
 
