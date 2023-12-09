@@ -6,4 +6,4 @@
 
     $sql =  "UPDATE Programs SET Description = 'Inactive' WHERE Program_Num = '$Program_Num';";
     mysqli_query($conn, $sql);
-    header("Location: ../index.php?signup=success");
+    header("Location: ../admin.php?signup=success");
