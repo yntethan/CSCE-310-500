@@ -214,7 +214,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
-    <!--Written by Joshua Yan-->
+    <!-- done by ethan-->
     <h2>Create an event for various programs</h2>
     <p>Note: Program Number must be an existing program in the database; see above programs table</p>
     <form action="includes/insertEvent.inc.php" method="POST">
@@ -238,7 +238,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
-    <!--Written by Joshua Yan-->
+    <!-- done by ethan-->
     <h2>Edit an event's details, including student attendance information</h2>
     <p>Enter the fields to be updated (other than Event ID, only fill out fields to be updated; can leave fields blank if no change)</p>
     <form action="includes/updateEvent.inc.php" method="POST">
@@ -262,7 +262,7 @@ if (!isset($_SESSION['loggedin'])) {
     </form>
     <br>
 
-    <!--Written by Michael Tao-->
+    <!-- done by ethan-->
     <h2>Retrieve information for each event</h2>
     <?php include 'includes/displayEvents.inc.php'; ?>
     <br>
